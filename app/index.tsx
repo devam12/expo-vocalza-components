@@ -1,41 +1,59 @@
-import Switch from "@/components/Switch";
-import { useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React from "react";
+import {
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import Entypo from "@expo/vector-icons/Entypo";
+import { useNavigation, useRouter } from "expo-router";
 
 export default function Index() {
-  const [switchValue, setSwitchValue] = useState(false);
+  const router = useRouter();
+  const data = [{ id: "switch", name: "Switch" }];
+
+  const handlePress = (itemId: string) => {
+    router.navigate(`/screen/${itemId}`);
+  };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <View style={styles.container}>
-        <Switch
-          value={switchValue}
-          onValueChange={setSwitchValue}
-          size={40}
-          style={styles.switch}
-        />
-        <Switch
-          onValueChange={(val) => console.log("Toggled:", val)}
-          size={24}
-        />
-      </View>
-    </View>
+    <>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.itemContainer}
+            onPress={() => handlePress(item.id)}
+          >
+            <View style={styles.itemContent}>
+              <Text style={styles.itemText}>{item.name}</Text>
+            </View>
+            <Entypo name="chevron-small-right" size={32} color="black" />
+          </TouchableOpacity>
+        )}
+      />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  itemContainer: {
+    padding: 15,
+    borderBottomWidth: 2,
+    borderColor: "#ccc",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "center",
+    flex: 1,
   },
-  switch: {
-    marginBottom: 20,
+  itemContent: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  itemText: {
+    fontSize: 18,
   },
 });

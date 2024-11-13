@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { StyleSheet, Pressable, Animated, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, {
@@ -16,25 +16,29 @@ interface SwitchProps {
 }
 
 const Switch: React.FC<SwitchProps> = ({
-  value,
+  value = false, // default to false if not provided
   onValueChange,
   style,
   size = 32,
 }) => {
-  const [internalValue, setInternalValue] = useState(value ?? false);
+  const [internalValue, setInternalValue] = useState(value);
   const translateX = useRef(
     new Animated.Value(internalValue ? size : 0)
   ).current;
 
   useEffect(() => {
+    setInternalValue(value);
+  }, [value]);
+
+  useEffect(() => {
     Animated.spring(translateX, {
-      toValue: value ?? internalValue ? size : 0,
+      toValue: internalValue ? size : 0,
       useNativeDriver: true,
     }).start();
-  }, [value, internalValue]);
+  }, [internalValue]);
 
   const toggleSwitch = () => {
-    const newValue = !(value ?? internalValue);
+    const newValue = !internalValue;
     setInternalValue(newValue);
     if (onValueChange) {
       onValueChange(newValue);
@@ -80,11 +84,7 @@ const Switch: React.FC<SwitchProps> = ({
       style={[{ width: size * 2, height: size }, style]}
     >
       <AnimatedLinearGradient
-        colors={
-          value ?? internalValue
-            ? ["#4C6EF5", "#A855F7"]
-            : ["#dce1e4", "#dce1e4"]
-        }
+        colors={internalValue ? ["#4C6EF5", "#A855F7"] : ["#dce1e4", "#dce1e4"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={{
@@ -120,7 +120,7 @@ const Switch: React.FC<SwitchProps> = ({
               borderRadius: size * 0.375,
             }}
           >
-            {value ?? internalValue ? <CheckIcon /> : <CloseIcon />}
+            {internalValue ? <CheckIcon /> : <CloseIcon />}
           </LinearGradient>
         </Animated.View>
       </AnimatedLinearGradient>
