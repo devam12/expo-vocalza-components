@@ -1,0 +1,73 @@
+- .expo
+  - README.md
+  - devices.json
+  - packager-info.json
+  - settings.json
+  - types
+    - router.d.ts
+- .gitignore
+- README.md
+- app
+  - _layout.tsx
+  - index.tsx
+  - screen
+    - _layout.tsx
+    - buttonScreen.tsx
+    - switchScreen.tsx
+- app-example
+  - app
+    - (tabs)
+      - _layout.tsx
+      - explore.tsx
+      - index.tsx
+    - +not-found.tsx
+    - _layout.tsx
+  - components
+    - Collapsible.tsx
+    - ExternalLink.tsx
+    - HapticTab.tsx
+    - HelloWave.tsx
+    - ParallaxScrollView.tsx
+    - ThemedText.tsx
+    - ThemedView.tsx
+    - __tests__
+      - ThemedText-test.tsx
+      - __snapshots__
+        - ThemedText-test.tsx.snap
+    - ui
+      - IconSymbol.ios.tsx
+      - IconSymbol.tsx
+      - TabBarBackground.ios.tsx
+      - TabBarBackground.tsx
+  - constants
+    - Colors.ts
+  - hooks
+    - useColorScheme.ts
+    - useColorScheme.web.ts
+    - useThemeColor.ts
+  - scripts
+    - reset-project.js
+- app.json
+- assets
+  - fonts
+    - SpaceMono-Regular.ttf
+  - images
+    - adaptive-icon.png
+    - favicon.png
+    - icon.png
+    - partial-react-logo.png
+    - react-logo.png
+    - react-logo@2x.png
+    - react-logo@3x.png
+    - splash-icon.png
+- components
+  - Button.tsx
+  - Switch.tsx
+- expo-env.d.ts
+- package-lock.json
+- package.json
+- tsconfig.json
+- util-component
+  - ComponentShowcase.tsx
+  - Header.tsx
+- yarn.lock

@@ -13,7 +13,7 @@ export default function RootLayout() {
       />
 
       <Stack.Screen
-        name="screen"
+        name="screen-index/[componentId]" // This is the dynamic route for each component
         options={{
           headerShown: true,
           headerTitle: "Component Details",
