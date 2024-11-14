@@ -12,6 +12,8 @@ const InputComponent = () => {
         outlineColor="#B0BEC5" // Default border color
         activeOutlineColor="#B0BEC5" // Border color when focused
         style={styles.input}
+        multiline={true}
+        numberOfLines={6} //Work in android only
       />
     </ScrollView>
   );
@@ -21,6 +23,6 @@ export default InputComponent;
 
 const styles = StyleSheet.create({
   input: {
-    width: "100%",
+    // width: "100%",
   },
 });
