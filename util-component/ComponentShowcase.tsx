@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   componentContainer: {
-    alignItems: "center",
+    justifyContent: "center",
   },
 });

@@ -14,6 +14,7 @@ export default function Index() {
   const data = [
     { id: "switch", name: "Switch Component" },
     { id: "button", name: "Button Component" },
+    { id: "input", name: "Input Component" },
   ];
 
   const handlePress = (componentId: string) => {

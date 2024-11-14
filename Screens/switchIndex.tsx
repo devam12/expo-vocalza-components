@@ -37,27 +37,4 @@ const styles = StyleSheet.create({
   switch: {
     margin: 12,
   },
-  showcaseItem: {
-    marginBottom: 24,
-    padding: 16,
-    borderRadius: 8,
-    backgroundColor: "#ffffff",
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 3 },
-  },
-  showcaseTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 8,
-  },
-  showcaseDescription: {
-    fontSize: 14,
-    color: "#666",
-    marginBottom: 12,
-  },
-  componentContainer: {
-    alignItems: "center",
-  },
 });

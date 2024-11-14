@@ -37,6 +37,7 @@ export default function ButtonIndex() {
           // fullWidth
           leftIcon={<Feather name="eye-off" size={18} color="white" />}
           onPress={() => console.log("Outlined button pressed!")}
+          style={{ width: "50%" }}
         >
           Hidden
         </CustomButton>
