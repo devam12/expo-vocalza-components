@@ -9,8 +9,11 @@ import CustomButton from "@/components/Button";
 export default function ButtonIndex() {
   return (
     <ScrollView>
-      <Header title="Button Component" />
-      <ComponentShowcase title="Full Width with left icon">
+      <Header title="Button Components" />
+      <ComponentShowcase
+        title="Full Width with left icon"
+        description="Contained"
+      >
         <CustomButton
           variant="contained"
           size="lg"
@@ -24,7 +27,10 @@ export default function ButtonIndex() {
         </CustomButton>
       </ComponentShowcase>
 
-      <ComponentShowcase title="Full Width with left icon">
+      <ComponentShowcase
+        title="Rounder style min Width with left icon"
+        description="Contained"
+      >
         <CustomButton
           variant="contained"
           size="lg"
@@ -36,7 +42,10 @@ export default function ButtonIndex() {
         </CustomButton>
       </ComponentShowcase>
 
-      <ComponentShowcase title="Full Width with left icon">
+      <ComponentShowcase
+        title="Full Width with left icon"
+        description="Outlined"
+      >
         <CustomButton
           variant="outlined"
           fullWidth
@@ -50,7 +59,10 @@ export default function ButtonIndex() {
         </CustomButton>
       </ComponentShowcase>
 
-      <ComponentShowcase title="Full Width with left icon">
+      <ComponentShowcase
+        title="Full Width with left icon"
+        description="Outlined"
+      >
         <CustomButton
           variant="outlined"
           customBorderColor="red"
@@ -63,7 +75,7 @@ export default function ButtonIndex() {
         </CustomButton>
       </ComponentShowcase>
 
-      <ComponentShowcase title="Full Width with left icon">
+      <ComponentShowcase title="Full Width with left icon" description="Text">
         <CustomButton
           variant="text"
           size="lg"

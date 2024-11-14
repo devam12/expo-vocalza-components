@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   showcaseTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 14,
+    marginBottom: 8,
   },
   showcaseDescription: {
     fontSize: 14,

@@ -11,7 +11,7 @@ export default function SwitchIndex() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title="Swicth Component" />
+      <Header title="Swicth Components" />
 
       <ComponentShowcase title="Size 40">
         <Switch
@@ -32,7 +32,6 @@ export default function SwitchIndex() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 16,
     backgroundColor: "#f4f4f4",
   },
   switch: {
