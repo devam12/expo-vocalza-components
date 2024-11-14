@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import SwitchIndex from "@/Screens/switchIndex";
 import ButtonIndex from "@/Screens/buttonIndex";
 import InputIndex from "@/Screens/inputIndex";
+import OtpInputIndex from "@/Screens/otpInputIndex";
 
 const ComponentScreen = () => {
   const { componentId } = useLocalSearchParams();
@@ -17,6 +18,8 @@ const ComponentScreen = () => {
         return <ButtonIndex />;
       case "input":
         return <InputIndex />;
+      case "otp-input":
+        return <OtpInputIndex />;
       default:
         return <Text>Component not found</Text>;
     }

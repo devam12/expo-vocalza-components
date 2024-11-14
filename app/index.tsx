@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
+import { Entypo } from "@expo/vector-icons";
 
 export default function Index() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function Index() {
     { id: "switch", name: "Switch Component" },
     { id: "button", name: "Button Component" },
     { id: "input", name: "Input Component" },
+    { id: "otp-input", name: "OTP Input Component" },
   ];
 
   const handlePress = (componentId: string) => {
@@ -31,6 +33,7 @@ export default function Index() {
           onPress={() => handlePress(item.id)}
         >
           <Text style={styles.itemText}>{item.name}</Text>
+          <Entypo name="chevron-small-right" size={32} color="black" />
         </TouchableOpacity>
       )}
     />
@@ -42,6 +45,9 @@ const styles = StyleSheet.create({
     padding: 15,
     borderBottomWidth: 2,
     borderColor: "#ccc",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   itemText: {
     fontSize: 18,
