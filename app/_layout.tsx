@@ -16,7 +16,7 @@ export default function RootLayout() {
         name="screen"
         options={{
           headerShown: true,
-          headerTitle: "Component Page",
+          headerTitle: "Component Details",
         }}
       />
     </Stack>

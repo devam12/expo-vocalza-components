@@ -7,7 +7,7 @@ export default function ScreenLayout() {
       <Stack.Screen
         name="switch"
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitle: "Switch ",
           headerBackVisible:true
         }}
