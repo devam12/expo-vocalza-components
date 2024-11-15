@@ -1,24 +1,39 @@
 import React from "react";
 import Header from "@/util-component/Header";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, Platform, TextInput } from "react-native";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
-import { TextInput } from "react-native-paper";
+import CustomTextInput from "@/components/Input";
+import { Feather } from "@expo/vector-icons";
 
 const InputIndex = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Input Components" />
 
-      <ComponentShowcase title="Input">
-        <TextInput
-          mode="outlined"
+      <ComponentShowcase title="Underline Input">
+        <CustomTextInput
+          placeholder="Underline Variant"
+          variant="underline"
+          multiline
+          numberOfLines={4}
+          leftIcon={<Feather name="activity" size={24} color="black" />}
+        />
+      </ComponentShowcase>
+
+      <ComponentShowcase title="Outlined Input">
+        <CustomTextInput
           placeholder="Enter Your Phone Number"
-          right={<TextInput.Affix text="/100" />}
-          outlineColor="#B0BEC5" // Default border color
-          activeOutlineColor="#B0BEC5" // Border color when focused
-          style={styles.input}
-          multiline={true}
-          numberOfLines={6} //Work in android only
+          variant="outlined"
+          // rightIcon={<Feather name="activity" size={24} color="black" />}
+          // leftIcon={<Feather name="activity" size={24} color="black" />}
+        />
+      </ComponentShowcase>
+
+      <ComponentShowcase title="Filled Input">
+        <CustomTextInput
+          placeholder="Filled Variant"
+          variant="filled"
+          leftIcon={<Feather name="activity" size={24} color="black" />}
         />
       </ComponentShowcase>
     </SafeAreaView>
@@ -32,7 +47,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f4f4f4",
   },
-  input: {
-    // width: "100%",
+  textInput: {
+    padding: 10,
+  },
+  androidMultilineInput: {
+    paddingVertical: 0,
+    textAlignVertical: "center", // Center placeholder vertically for multiline in Android
   },
 });

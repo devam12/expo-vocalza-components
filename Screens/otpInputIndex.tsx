@@ -1,8 +1,5 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React, { useState } from "react";
-import Header from "@/util-component/Header";
-import ComponentShowcase from "@/util-component/ComponentShowcase";
-import { useNavigation } from "expo-router";
 import { OTPInput } from "@/components/OTPInput";
 
 const OtpInputIndex = () => {
