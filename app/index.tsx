@@ -17,6 +17,7 @@ export default function Index() {
     { id: "button", name: "Button Component" },
     { id: "input", name: "Input Component" },
     { id: "otp-input", name: "OTP Input Component" },
+    { id: "icon-button", name: "Icon Button Component" },
   ];
 
   const handlePress = (componentId: string) => {

@@ -6,6 +6,7 @@ import SwitchIndex from "@/Screens/switchIndex";
 import ButtonIndex from "@/Screens/buttonIndex";
 import InputIndex from "@/Screens/inputIndex";
 import OtpInputIndex from "@/Screens/otpInputIndex";
+import IconButtonIndex from "@/Screens/iconButtonIndex";
 
 const ComponentScreen = () => {
   const { componentId } = useLocalSearchParams();
@@ -20,6 +21,8 @@ const ComponentScreen = () => {
         return <InputIndex />;
       case "otp-input":
         return <OtpInputIndex />;
+      case "icon-button":
+        return <IconButtonIndex />;
       default:
         return <Text>Component not found</Text>;
     }

@@ -42,7 +42,6 @@ export function OTPInput({
 
   useEffect(() => {
     if (Platform.OS === "android") {
-      // Set up SMS Retriever API listener for Android
       try {
         const eventEmitter = new NativeEventEmitter(
           NativeModules.RNSmsRetrieverModule
