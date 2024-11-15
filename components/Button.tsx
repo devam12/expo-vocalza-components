@@ -178,7 +178,7 @@ const CustomButton: React.FC<ButtonProps> = ({
 
   return (
     <TouchableOpacity
-      activeOpacity={0.7}
+      activeOpacity={0.1}
       disabled={disabled}
       style={containerStyle}
       {...props}
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
       },
       android: {
-        elevation: 4,
+        // elevation: 4,
       },
     }),
   },
