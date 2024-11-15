@@ -108,8 +108,8 @@ export function OTPInput({
             ref={(ref) => (inputRefs.current[index] = ref)}
             style={[
               styles.input,
-              showError && error ? styles.inputError : null,
               activeInput === index ? styles.inputActive : null,
+              showError && error ? styles.inputError : null,
             ]}
             maxLength={1}
             keyboardType="number-pad"
@@ -128,6 +128,7 @@ export function OTPInput({
         variant="text"
         textStyle={{ fontWeight: "700", fontSize: 16 }}
         onPress={onResendHandler}
+        style={styles.resendButton}
       >
         RESEND CODE
       </CustomButton>
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   resendButton: {
-    marginTop: 24,
+    marginTop: 16,
     padding: 8,
   },
   resendButtonText: {

@@ -6,7 +6,7 @@ const OtpInputIndex = () => {
   const [otpError, setOtpError] = useState<string>("");
 
   const handleOTPComplete = (code: string) => {
-    if (code === "123456") {
+    if (code === "1234") {
       setOtpError("");
       alert("OTP successfully completed");
     } else {
