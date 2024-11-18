@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { StyleSheet, Pressable, Animated, ViewStyle } from "react-native";
+import { Pressable, Animated, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, {
   Path,
@@ -12,11 +12,11 @@ interface SwitchProps {
   value?: boolean;
   onValueChange?: (value: boolean) => void;
   style?: ViewStyle;
-  size?: number; // base size of the switch (width will be 2x this size, height will be this size)
+  size?: number;
 }
 
 const Switch: React.FC<SwitchProps> = ({
-  value = false, // default to false if not provided
+  value = false,
   onValueChange,
   style,
   size = 32,
@@ -49,19 +49,22 @@ const Switch: React.FC<SwitchProps> = ({
     Animated.createAnimatedComponent(LinearGradient);
 
   const CheckIcon = () => (
-    <Svg width={size * 0.4} height={size * 0.4} viewBox="0 0 12 12">
+    <Svg width={size} height={size} viewBox="-6 -6 36 36" fill="none">
+      {/* Gradient Definition */}
       <Defs>
         <SvgGradient id="checkGradient" x1="0" y1="0" x2="1" y2="0">
           <Stop offset="0" stopColor="#4C6EF5" />
           <Stop offset="1" stopColor="#A855F7" />
         </SvgGradient>
       </Defs>
+
+      {/* Checkmark Path */}
       <Path
-        d="M3 6L5.5 8.5L9 3"
-        stroke="url(#checkGradient)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M5 12.5L9.5 17L19 7" // Optimized checkmark path for a balanced layout
+        stroke="url(#checkGradient)" // Gradient stroke
+        strokeWidth="3" // Bold for clarity at different sizes
+        strokeLinecap="round" // Smooth endpoints
+        strokeLinejoin="round" // Smooth corners
       />
     </Svg>
   );
