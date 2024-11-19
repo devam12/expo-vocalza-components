@@ -8,6 +8,7 @@ import InputIndex from "@/Screens/inputIndex";
 import OtpInputIndex from "@/Screens/otpInputIndex";
 import IconButtonIndex from "@/Screens/iconButtonIndex";
 import ChipIndex from "@/Screens/chipIndex";
+import SerahcBarIndex from "@/Screens/serahcBarIndex";
 
 const ComponentScreen = () => {
   const { componentId } = useLocalSearchParams();
@@ -26,6 +27,8 @@ const ComponentScreen = () => {
         return <IconButtonIndex />;
       case "chip":
         return <ChipIndex />;
+      case "serach-bar":
+        return <SerahcBarIndex />;
       default:
         return <Text>Component not found</Text>;
     }
