@@ -1,23 +1,9 @@
 import * as React from "react";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  ViewStyle,
-} from "react-native";
+import { View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
-
-interface ChipProps {
-  label: string;
-  onTap?: () => void;
-  selected?: boolean;
-  fullWidth?: boolean; // New prop for full width option
-  borderGradientColors?: [string, string, ...string[]];
-  textGradientColors?: [string, string, ...string[]];
-  containerStyle?: ViewStyle;
-}
+import { ChipProps } from "../types/Chip";
 
 export function Chip({
   label,
@@ -80,6 +66,8 @@ export function Chip({
     </TouchableOpacity>
   );
 }
+
+export default Chip;
 
 const styles = StyleSheet.create({
   chipContainer: {

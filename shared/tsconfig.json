@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true, // Ensures declaration files are generated
+    "declarationDir": "dist/types", // Output directory for declaration files
+    "outDir": "dist", // Output directory for compiled JavaScript files
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "target": "ES6",
+    "module": "ESNext",
+    "jsx": "react" // If using JSX
+  },
+  "include": ["/**/*"]
+}

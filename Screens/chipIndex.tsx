@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import React from "react";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
-import { Chip } from "@/components/Chip";
+import { Chip } from "vocalza-componenets";
 
 const ChipIndex = () => {
   const list = [
@@ -24,7 +24,6 @@ const ChipIndex = () => {
       <ComponentShowcase title="GradientColor Chip With Text">
         <Chip label="test"></Chip>
       </ComponentShowcase>
-
       <ComponentShowcase title="Basic Chip With Tag">
         <Chip
           label="#GROUP"
@@ -32,7 +31,6 @@ const ChipIndex = () => {
           textGradientColors={["#000", "#000"]}
         ></Chip>
       </ComponentShowcase>
-
       <ComponentShowcase title="Chip Container">
         <View
           style={{
@@ -42,14 +40,17 @@ const ChipIndex = () => {
             justifyContent: "center",
           }}
         >
-          {list?.map((item) => (
-            <Chip
-              label={item}
-              // borderGradientColors={["#dce1e0", "#dce1e0"]}
-              // textGradientColors={["#000", "#000"]}
-              containerStyle={{ borderColor: "black", margin: 4 }}
-            ></Chip>
-          ))}
+          {list?.map((item: string) => {
+            return (
+              <Chip
+                label={item}
+                // borderGradientColors={["#dce1e0", "#dce1e0"]}
+                // textGradientColors={["#000", "#000"]}
+                containerStyle={{ borderColor: "black", margin: 4 }}
+                key={item}
+              ></Chip>
+            );
+          })}
         </View>
       </ComponentShowcase>
     </ScrollView>

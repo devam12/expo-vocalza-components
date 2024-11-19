@@ -1,13 +1,8 @@
 import React from "react";
 import { TextInput, StyleSheet, View, TextInputProps } from "react-native";
+import { CustomTextInputProps } from "../types/Input";
 
-interface CustomTextInputProps extends TextInputProps {
-  variant?: "underline" | "outlined" | "filled";
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-}
-
-const CustomTextInput: React.FC<CustomTextInputProps> = ({
+export const CustomTextInput: React.FC<CustomTextInputProps> = ({
   variant = "underline",
   leftIcon,
   rightIcon,

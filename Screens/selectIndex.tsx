@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const SerachBar = () => {
-  return <View>Serach Bar</View>;
+const SelectIndex = () => {
+  return (
+    <View>
+      <Text>selectIndex</Text>
+    </View>
+  );
 };
 
-export default SerachBar;
+export default SelectIndex;
 
 const styles = StyleSheet.create({});

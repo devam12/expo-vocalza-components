@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import Header from "@/util-component/Header";
 import { StyleSheet, SafeAreaView, Platform } from "react-native";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
-// import { SearchBar } from "react-native-elements";
-import { ActivityIndicator } from "react-native-paper";
-import { AntDesign } from "@expo/vector-icons";
-import { Searchbar } from "react-native-paper";
-import SerachBar from "@/components/SerachBar";
+import SerachBar from "@/shared/components/SerachBar";
+
 
 const SearchBarIndex = () => {
   const [search, setSearch] = useState("");

@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import React, { useState } from "react";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
 import { Icon } from "react-native-elements";
-import IconButton from "@/components/IconButton";
+import IconButton from "@/shared/components/IconButton";
 import { AntDesign } from "@expo/vector-icons";
 
 const IconButtonIndex = () => {

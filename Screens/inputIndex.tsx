@@ -2,7 +2,7 @@ import React from "react";
 import Header from "@/util-component/Header";
 import { StyleSheet, SafeAreaView, Platform, TextInput } from "react-native";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
-import CustomTextInput from "@/components/Input";
+import CustomTextInput from "@/shared/components/Input";
 import { Feather } from "@expo/vector-icons";
 
 const InputIndex = () => {

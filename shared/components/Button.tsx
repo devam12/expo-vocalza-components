@@ -1,32 +1,9 @@
 import React from "react";
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  ViewStyle,
-  TextStyle,
-  View,
-  TouchableOpacityProps,
-  Platform,
-} from "react-native";
+import { StyleSheet, ViewStyle, View } from "react-native";
+import { TextStyle, Platform } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-
-type ButtonVariant = "contained" | "outlined" | "text";
-
-interface ButtonProps extends TouchableOpacityProps {
-  variant?: ButtonVariant;
-  size?: "default" | "sm" | "lg";
-  fullWidth?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-  children: React.ReactNode;
-  gradientColors?: [string, string]; // Ensure exactly two colors in the gradient
-  customBackgroundColor?: string;
-  customBorderColor?: string;
-  customTextColor?: string;
-  style?: any;
-  textStyle?: TextStyle;
-}
+import { ButtonVariant, CustomButtonProps } from "../types/Button";
 
 const getVariantStyles = (
   variant: ButtonVariant,
@@ -108,7 +85,7 @@ const getSizeStyles = (
   }
 };
 
-const CustomButton: React.FC<ButtonProps> = ({
+export const CustomButton: React.FC<CustomButtonProps> = ({
   variant = "contained",
   size = "default",
   fullWidth = false,

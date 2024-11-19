@@ -1,21 +1,9 @@
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { Icon } from "react-native-elements";
 import { Badge } from "react-native-paper";
+import { IconButtonProps } from "../types/IconButton";
 
-interface IconButtonProps {
-  icon: React.ReactNode;
-  size?: number;
-  filled?: boolean;
-  badge?: number | string | undefined;
-  badgeSize?: number;
-  showBadge?: boolean;
-  badgeStyle?: object;
-  backgroundColor?: string;
-  iconColor?: string;
-}
-
-const IconButton = ({
+export const IconButton = ({
   icon,
   size = 24,
   badgeSize = 24,

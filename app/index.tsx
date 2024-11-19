@@ -20,6 +20,7 @@ export default function Index() {
     { id: "icon-button", name: "Icon Button Component" },
     { id: "chip", name: "Chip Component" },
     { id: "serach-bar", name: "Serach Bar Component" },
+    { id: "select", name: "Select Options Component" },
   ];
 
   const handlePress = (componentId: string) => {

@@ -5325,6 +5325,11 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lucide-react-native@^0.460.0:
+  version "0.460.0"
+  resolved "https://registry.yarnpkg.com/lucide-react-native/-/lucide-react-native-0.460.0.tgz#240e4333ddcd19753d613e963a9ce60a7879d666"
+  integrity sha512-Z43BbteT398BMNcqkZWGc+lKUgERPo5oVV+2NYlGUF+vP2xtckO4tJKcuF+jR+wrLyxrAFfTHetfz80aNryWMw==
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -7658,6 +7663,11 @@ vlq@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/vlq/-/vlq-1.0.1.tgz#c003f6e7c0b4c1edd623fd6ee50bbc0d6a1de468"
   integrity sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==
+
+vocalza-componenets@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vocalza-componenets/-/vocalza-componenets-1.0.2.tgz#5b0bf47e449f2a0fbbc3c76bdf4b4f2503f14035"
+  integrity sha512-MkxSYHwfQjp3Ml89FTM2qAQTgmeU+pxOpm9gi0hHem+HM8qidJT8auEOgYIx0LP6r9vt/KZjJbAco+6fFOfyAQ==
 
 w3c-xmlserializer@^4.0.0:
   version "4.0.0"

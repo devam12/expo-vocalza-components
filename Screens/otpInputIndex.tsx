@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import React, { useState } from "react";
-import { OTPInput } from "@/components/OTPInput";
+import OTPInput from "@/shared/components/OTPInput";
 
 const OtpInputIndex = () => {
   const [otpError, setOtpError] = useState<string>("");

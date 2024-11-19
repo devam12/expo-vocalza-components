@@ -1,24 +1,9 @@
-import ButtonIndex from "@/Screens/buttonIndex";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Platform,
-  NativeEventEmitter,
-  NativeModules,
-} from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
+import { Text, NativeEventEmitter } from "react-native";
+import { Platform, NativeModules } from "react-native";
 import CustomButton from "./Button";
-
-interface OTPInputProps {
-  length?: number;
-  onComplete?: (code: string) => void;
-  error?: string;
-  onResend?: () => void;
-  showError?: boolean;
-}
+import { OTPInputProps } from "../types/OTPInput";
 
 export function OTPInput({
   length = 4,
@@ -134,6 +119,8 @@ export function OTPInput({
     </View>
   );
 }
+
+export default OTPInput;
 
 const styles = StyleSheet.create({
   container: {

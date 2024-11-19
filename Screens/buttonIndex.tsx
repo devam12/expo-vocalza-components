@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Header from "@/util-component/Header";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
-import CustomButton from "@/components/Button";
+import CustomButton from "@/shared/components/Button";
 
 export default function ButtonIndex() {
   return (
