@@ -2,14 +2,14 @@
 import React from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
-import SwitchIndex from "@/Screens/switchIndex";
-import ButtonIndex from "@/Screens/buttonIndex";
-import InputIndex from "@/Screens/inputIndex";
-import OtpInputIndex from "@/Screens/otpInputIndex";
-import IconButtonIndex from "@/Screens/iconButtonIndex";
-import ChipIndex from "@/Screens/chipIndex";
-import SerahcBarIndex from "@/Screens/serahcBarIndex";
-import SelectIndex from "@/Screens/selectIndex";
+import SwitchIndex from "@/screens/switchIndex";
+import ButtonIndex from "@/screens/buttonIndex";
+import InputIndex from "@/screens/inputIndex";
+import OtpInputIndex from "@/screens/otpInputIndex";
+import IconButtonIndex from "@/screens/iconButtonIndex";
+import ChipIndex from "@/screens/chipIndex";
+import SerahcBarIndex from "@/screens/serahcBarIndex";
+import SelectIndex from "@/screens/selectIndex";
 
 const ComponentScreen = () => {
   const { componentId } = useLocalSearchParams();

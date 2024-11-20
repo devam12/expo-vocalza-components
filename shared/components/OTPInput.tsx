@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, TextInput, StyleSheet } from "react-native";
-import { Text, NativeEventEmitter } from "react-native";
-import { Platform, NativeModules } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Platform,
+  NativeEventEmitter,
+  NativeModules,
+} from "react-native";
+import { Text } from "react-native";
 import CustomButton from "./Button";
 import { OTPInputProps } from "../types/OTPInput";
 
@@ -15,7 +21,26 @@ export function OTPInput({
   const [otp, setOtp] = useState<string[]>(new Array(length).fill(""));
   const [activeInput, setActiveInput] = useState<number>(0);
   const [otpError, setOtpError] = useState<string>("");
+  const [isResendDisabled, setIsResendDisabled] = useState(false);
+  const [resendTimer, setResendTimer] = useState(30);
   const inputRefs = useRef<Array<TextInput | null>>([]);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startResendCooldown = () => {
+    setIsResendDisabled(true);
+    setResendTimer(120);
+
+    timerRef.current = setInterval(() => {
+      setResendTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(timerRef.current!);
+          setIsResendDisabled(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   const onResendHandler = () => {
     alert("New OTP sent!");
@@ -23,6 +48,7 @@ export function OTPInput({
     if (onResend) {
       onResend();
     }
+    startResendCooldown();
   };
 
   useEffect(() => {
@@ -53,6 +79,14 @@ export function OTPInput({
         console.log("SMS Retriever API not available");
       }
     }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
   }, []);
 
   const handleInputChange = (value: string, index: number) => {
@@ -113,9 +147,16 @@ export function OTPInput({
         textStyle={{ fontWeight: "700", fontSize: 16 }}
         onPress={onResendHandler}
         style={styles.resendButton}
+        disabled={isResendDisabled}
       >
-        RESEND CODE
+        {"RESEND CODE"}
       </CustomButton>
+
+      {isResendDisabled && (
+        <Text
+          style={{ color: "red" }}
+        >{`Resend Code after : ${resendTimer}s`}</Text>
+      )}
     </View>
   );
 }
@@ -159,11 +200,5 @@ const styles = StyleSheet.create({
   },
   resendButton: {
     marginTop: 16,
-    padding: 8,
-  },
-  resendButtonText: {
-    color: "#007AFF",
-    fontSize: 16,
-    fontWeight: "bold",
   },
 });
