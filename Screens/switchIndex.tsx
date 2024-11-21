@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Switch from "@/components/Switch";
+import Switch from "@/shared/components/Switch";
 import Header from "@/util-component/Header";
 import { useState } from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
@@ -12,7 +12,6 @@ export default function SwitchIndex() {
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Swicth Components" />
-
       <ComponentShowcase title="Size 40">
         <Switch
           value={true}
@@ -21,7 +20,6 @@ export default function SwitchIndex() {
           style={styles.switch}
         />
       </ComponentShowcase>
-
       <ComponentShowcase title="Size 24 - with costom styling">
         <Switch size={24} style={styles.switch} />
       </ComponentShowcase>
