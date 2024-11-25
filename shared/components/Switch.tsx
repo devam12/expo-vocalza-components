@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Pressable, Animated, ViewStyle } from "react-native";
+import { Pressable, Animated, ViewStyle, View, Text, TextStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, {
   Path,
@@ -13,6 +13,8 @@ interface SwitchProps {
   onValueChange?: (value: boolean) => void;
   style?: ViewStyle;
   size?: number;
+  title?: string;
+  titleStyle?: TextStyle;
 }
 
 const Switch: React.FC<SwitchProps> = ({
@@ -20,6 +22,8 @@ const Switch: React.FC<SwitchProps> = ({
   onValueChange,
   style,
   size = 32,
+  title,
+  titleStyle,
 }) => {
   const [internalValue, setInternalValue] = useState(value);
   const translateX = useRef(
@@ -50,21 +54,18 @@ const Switch: React.FC<SwitchProps> = ({
 
   const CheckIcon = () => (
     <Svg width={size} height={size} viewBox="-6 -6 36 36" fill="none">
-      {/* Gradient Definition */}
       <Defs>
         <SvgGradient id="checkGradient" x1="0" y1="0" x2="1" y2="0">
           <Stop offset="0" stopColor="#4C6EF5" />
           <Stop offset="1" stopColor="#A855F7" />
         </SvgGradient>
       </Defs>
-
-      {/* Checkmark Path */}
       <Path
-        d="M5 12.5L9.5 17L19 7" // Optimized checkmark path for a balanced layout
-        stroke="url(#checkGradient)" // Gradient stroke
-        strokeWidth="3" // Bold for clarity at different sizes
-        strokeLinecap="round" // Smooth endpoints
-        strokeLinejoin="round" // Smooth corners
+        d="M5 12.5L9.5 17L19 7"
+        stroke="url(#checkGradient)"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </Svg>
   );
@@ -81,53 +82,76 @@ const Switch: React.FC<SwitchProps> = ({
     </Svg>
   );
 
+  const titleFontSize = size * 0.5; 
+
   return (
-    <Pressable
-      onPress={toggleSwitch}
-      style={[{ width: size * 2, height: size }, style]}
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        ...style,
+      }}
     >
-      <AnimatedLinearGradient
-        colors={internalValue ? ["#4C6EF5", "#A855F7"] : ["#dce1e4", "#dce1e4"]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={{
-          width: "100%",
-          height: "100%",
-          borderRadius: size / 2,
-          padding: size * 0.125,
-        }}
-      >
-        <Animated.View
+      {!!title && (
+        <Text
           style={{
-            width: size * 0.75,
-            height: size * 0.75,
-            borderRadius: size * 0.375,
-            shadowColor: "#000",
-            shadowOffset: { width: 0, height: size * 0.06 },
-            shadowOpacity: 0.25,
-            shadowRadius: size * 0.12,
-            elevation: 5,
-            overflow: "hidden",
-            transform: [{ translateX }],
+            flex: 1,
+            fontSize: titleFontSize, 
+            ...titleStyle,
           }}
         >
-          <LinearGradient
-            colors={["#ffffff", "#ffffff"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
+          {title}
+        </Text>
+      )}
+      <Pressable
+        onPress={toggleSwitch}
+        style={[{ width: size * 2, height: size }, style]}
+      >
+        <AnimatedLinearGradient
+          colors={
+            internalValue ? ["#4C6EF5", "#A855F7"] : ["#dce1e4", "#dce1e4"]
+          }
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: size / 2,
+            padding: size * 0.125,
+          }}
+        >
+          <Animated.View
             style={{
-              width: "100%",
-              height: "100%",
-              alignItems: "center",
-              justifyContent: "center",
+              width: size * 0.75,
+              height: size * 0.75,
               borderRadius: size * 0.375,
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: size * 0.06 },
+              shadowOpacity: 0.25,
+              shadowRadius: size * 0.12,
+              elevation: 5,
+              overflow: "hidden",
+              transform: [{ translateX }],
             }}
           >
-            {internalValue ? <CheckIcon /> : <CloseIcon />}
-          </LinearGradient>
-        </Animated.View>
-      </AnimatedLinearGradient>
-    </Pressable>
+            <LinearGradient
+              colors={["#ffffff", "#ffffff"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={{
+                width: "100%",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: size * 0.375,
+              }}
+            >
+              {internalValue ? <CheckIcon /> : <CloseIcon />}
+            </LinearGradient>
+          </Animated.View>
+        </AnimatedLinearGradient>
+      </Pressable>
+    </View>
   );
 };
 

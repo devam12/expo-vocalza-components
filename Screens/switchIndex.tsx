@@ -17,11 +17,11 @@ export default function SwitchIndex() {
           value={true}
           onValueChange={setSwitchValue}
           size={40}
-          style={styles.switch}
+          title={"Switch Name (Title)"}
         />
       </ComponentShowcase>
       <ComponentShowcase title="Size 24 - with costom styling">
-        <Switch size={24} style={styles.switch} />
+        <Switch size={24} />
       </ComponentShowcase>
     </SafeAreaView>
   );
