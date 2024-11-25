@@ -15,10 +15,11 @@ export default function SwitchIndex() {
         <Switch
           value={true}
           onValueChange={setSwitchValue}
-          size={40}
+          size={24}
           title={"Switch Name (Title)"}
         />
       </ComponentShowcase>
+
       <ComponentShowcase title="Size 24 - with costom styling">
         <Switch size={24} />
       </ComponentShowcase>
@@ -33,5 +34,14 @@ const styles = StyleSheet.create({
   },
   switch: {
     margin: 12,
+  },
+  swicthtitleStyle: {
+    fontFamily: "Heebo",
+    fontSize: 16,
+    fontWeight: "400",
+    lineHeight: 24,
+    letterSpacing: 0.5,
+    textAlign: "left",
+    color: "black",
   },
 });

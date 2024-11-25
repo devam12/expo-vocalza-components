@@ -93,7 +93,7 @@ const Switch: React.FC<SwitchProps> = ({
       )}
       <Pressable
         onPress={toggleSwitch}
-        style={[{ width: size * 2, height: size }, style]}
+        style={[{ width: size * 2, height: size }]}
       >
         <AnimatedLinearGradient
           colors={
