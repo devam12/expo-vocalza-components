@@ -24,7 +24,7 @@ export default function Index() {
   ];
 
   const handlePress = (componentId: string) => {
-    router.push(`/screen-index/${componentId}`);
+    router.push(`/screen-list/${componentId}`);
   };
 
   return (
