@@ -1,8 +1,8 @@
 {
   "name": "vocalza-componenets",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
-  "description": "Swicth components changes",
+  "description": "Swicth components type changes",
   "main": "index.ts",
   "types": "dist/types/vocalza-components.d.ts",
   "scripts": {
