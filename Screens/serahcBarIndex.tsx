@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Header from "@/util-component/Header";
 import { StyleSheet, SafeAreaView, Platform } from "react-native";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
-import SerachBar from "@/shared/components/SerachBar";
-
 
 const SearchBarIndex = () => {
   const [search, setSearch] = useState("");
@@ -38,7 +36,7 @@ const SearchBarIndex = () => {
           clearIcon={{ name: "close" }} // Customize clear icon
           showCancel={Platform.OS === "ios"} // Show cancel button for iOS
         /> */}
-        <SerachBar></SerachBar>
+        <></>
       </ComponentShowcase>
     </SafeAreaView>
   );
