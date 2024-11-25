@@ -1,21 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Pressable, Animated, ViewStyle, View, Text, TextStyle } from "react-native";
+import { Pressable, Animated, View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Svg, {
-  Path,
-  Defs,
-  LinearGradient as SvgGradient,
-  Stop,
-} from "react-native-svg";
-
-interface SwitchProps {
-  value?: boolean;
-  onValueChange?: (value: boolean) => void;
-  style?: ViewStyle;
-  size?: number;
-  title?: string;
-  titleStyle?: TextStyle;
-}
+import Svg, { Path, Defs } from "react-native-svg";
+import { LinearGradient as SvgGradient, Stop } from "react-native-svg";
+import { SwitchProps } from "../types/Switch";
 
 const Switch: React.FC<SwitchProps> = ({
   value = false,
@@ -82,7 +70,7 @@ const Switch: React.FC<SwitchProps> = ({
     </Svg>
   );
 
-  const titleFontSize = size * 0.5; 
+  const titleFontSize = size * 0.5;
 
   return (
     <View
@@ -96,7 +84,7 @@ const Switch: React.FC<SwitchProps> = ({
         <Text
           style={{
             flex: 1,
-            fontSize: titleFontSize, 
+            fontSize: titleFontSize,
             ...titleStyle,
           }}
         >

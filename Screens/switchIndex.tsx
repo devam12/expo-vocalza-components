@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import Switch from "@/shared/components/Switch";
 import Header from "@/util-component/Header";
 import { useState } from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
-import { useNavigation } from "expo-router";
+import { Switch } from "@/shared";
 
 export default function SwitchIndex() {
   const [switchValue, setSwitchValue] = useState(false);

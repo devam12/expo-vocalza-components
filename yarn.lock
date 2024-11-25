@@ -7664,10 +7664,10 @@ vlq@^1.0.0:
   resolved "https://registry.yarnpkg.com/vlq/-/vlq-1.0.1.tgz#c003f6e7c0b4c1edd623fd6ee50bbc0d6a1de468"
   integrity sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==
 
-vocalza-componenets@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/vocalza-componenets/-/vocalza-componenets-1.0.2.tgz#5b0bf47e449f2a0fbbc3c76bdf4b4f2503f14035"
-  integrity sha512-MkxSYHwfQjp3Ml89FTM2qAQTgmeU+pxOpm9gi0hHem+HM8qidJT8auEOgYIx0LP6r9vt/KZjJbAco+6fFOfyAQ==
+vocalza-componenets@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/vocalza-componenets/-/vocalza-componenets-1.0.5.tgz#6671c5064d8069ac79ad7603b526bb0e141dd4c8"
+  integrity sha512-x5HJXCFl7nRxDOm8kmnfMTViP1wdT8x+l5eJj6M6Q0xcLEVJppV5kaw9GP4VlPTFTeh1CEGoBTQK1mxIVWtzxQ==
 
 w3c-xmlserializer@^4.0.0:
   version "4.0.0"
