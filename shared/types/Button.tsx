@@ -9,7 +9,7 @@ export interface CustomButtonProps extends TouchableOpacityProps {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   children: React.ReactNode;
-  gradientColors?: [string, string]; // Ensure exactly two colors in the gradient
+  gradientColors?: [string, string];
   customBackgroundColor?: string;
   customBorderColor?: string;
   customTextColor?: string;

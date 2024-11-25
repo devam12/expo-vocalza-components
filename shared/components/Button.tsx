@@ -12,7 +12,7 @@ const getVariantStyles = (
   customBorderColor?: string,
   customTextColor?: string
 ) => {
-  const defaultGradient: [string, string] = ["#4C9EEB", "#9B5DE5"]; // Ensure two-color tuple
+  const defaultGradient: [string, string] = ["#4C9EEB", "#9B5DE5"];
   const appliedGradient: [string, string] = gradientColors || defaultGradient;
 
   switch (variant) {
