@@ -18,13 +18,13 @@ export const useAudioRecordEvent = () => {
   const startTime = useRef<moment.Moment | null>(null);
   const interval = useRef<NodeJS.Timeout | null>(null);
 
+  const MAX_DURATION_SECONDS = 60; // 1 minute limit
+
   useEffect(() => {
     if (recording) {
-      interval.current = setInterval(() => {
+      interval.current = setInterval(async () => {
         if (startTime.current) {
           const diff = moment.duration(moment().diff(startTime.current));
-          // const minutes = diff.minutes().toString().padStart(2, "0");
-          // const seconds = diff.seconds().toString().padStart(2, "0");
           const minutes = diff.minutes().toLocaleString("en-US", {
             minimumIntegerDigits: 2,
             useGrouping: false,
@@ -35,6 +35,11 @@ export const useAudioRecordEvent = () => {
           });
 
           setCounterMessage(`${minutes}:${seconds}`);
+
+          // Stop the recording if it exceeds the maximum duration
+          if (diff.asSeconds() >= MAX_DURATION_SECONDS) {
+            await stopRecording();
+          }
         }
       }, 1000);
     } else {
@@ -77,7 +82,6 @@ export const useAudioRecordEvent = () => {
   const stopRecording = async () => {
     try {
       if (recording) {
-        //Get the durationMillis before stop recoding
         const { durationMillis } = await recording.getStatusAsync();
 
         await recording.stopAndUnloadAsync();
