@@ -1,15 +1,10 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import { PTTButton } from "./PTTButton";
 import { LockButton } from "./LockButton";
 import { StopButton } from "./StopButton";
 import { Feather } from "@expo/vector-icons";
-import {
-  View,
-  StyleSheet,
-  Text,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { useAnimatedStyle, withTiming } from "react-native-reanimated";
 import Animated, { useSharedValue } from "react-native-reanimated";
 import { useAudioRecordEvent } from "../hooks/useRecordEvent";
@@ -32,10 +27,6 @@ export const VoiceRecorder = () => {
     isLocked,
     setIsLocked,
   } = useAudioRecordEvent();
-
-  const handlePTTStart = useCallback(() => {
-    startRecording();
-  }, []);
 
   const handlePTTEnd = useCallback(() => {
     if (!isLocked) {
@@ -108,12 +99,13 @@ export const VoiceRecorder = () => {
           </TouchableOpacity>
         )}
       </View>
+
       <View style={styles.controlsContainer}>
         {!isLocked && (
           <Animated.View style={[styles.pttContainer, pttAnimatedStyle]}>
             <PTTButton
               isRecording={isRecording}
-              onStart={handlePTTStart}
+              onStart={startRecording}
               onEnd={handlePTTEnd}
               onSlideToLock={handleLockSlide}
               lockThreshold={lockThreshold}

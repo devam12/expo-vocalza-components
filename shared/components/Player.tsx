@@ -1,7 +1,11 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { usePlayerEvent } from "../hooks/usePlayerEvent";
+import {
+  Waveform,
+  type IWaveformRef,
+} from "@simform_solutions/react-native-audio-waveform";
 
 interface PlayerProps {
   item: {
@@ -22,16 +26,19 @@ export const Player = forwardRef(
       pauseAudio,
     }));
 
+    const path = item?.uri;
+    // const ref = useRef<IWaveformRef>(null);
+
     return (
       <TouchableOpacity style={{ marginBottom: 12 }}>
         <Text key={item.uri} style={{ marginBottom: 12 }}>
           {item.name} - {item.duration}
         </Text>
-
         <View
           style={{
             flexDirection: "row",
             width: "100%",
+            alignItems: "center",
             marginBottom: 12,
             paddingHorizontal: 10,
           }}
@@ -53,8 +60,13 @@ export const Player = forwardRef(
               onPress={() => playAudio(uri)}
             />
           )}
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <View
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+            }}
+          >
+            {/* <View
               style={{
                 height: 10,
                 width: "100%",
@@ -68,7 +80,20 @@ export const Player = forwardRef(
                   backgroundColor: "rgba(00,00,255,0.5)",
                 }}
               ></View>
-            </View>
+            </View> */}
+            <Waveform
+              mode="static"
+              ref={ref}
+              path={path}
+              candleSpace={2}
+              candleWidth={5}
+              candleHeightScale={5}
+              containerStyle={{ borderRadius: 8, backgroundColor: "#fefefe" }}
+              waveColor={"gray"}
+              onPlayerStateChange={(playerState) => console.log(playerState)}
+              onPanStateChange={(isMoving) => console.log(isMoving)}
+              scrubColor={"red"}
+            />
           </View>
         </View>
       </TouchableOpacity>
