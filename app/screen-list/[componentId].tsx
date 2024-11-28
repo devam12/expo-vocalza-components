@@ -9,8 +9,7 @@ import OtpInputIndex from "@/screens/otpInputIndex";
 import IconButtonIndex from "@/screens/iconButtonIndex";
 import ChipIndex from "@/screens/chipIndex";
 import SerahcBarIndex from "@/screens/serahcBarIndex";
-import SelectIndex from "@/screens/selectIndex";
-import AudioPPTButton from "@/screens/audioPPTButtonIndex";
+import AudioPPTIndex from "@/screens/audioPPTButtonIndex";
 
 const ComponentScreen = () => {
   const { componentId } = useLocalSearchParams();
@@ -32,7 +31,7 @@ const ComponentScreen = () => {
       case "serach-bar":
         return <SerahcBarIndex />;
       case "audio-ppt-button":
-        return <AudioPPTButton />;
+        return <AudioPPTIndex />;
       default:
         return <Text>Component not found</Text>;
     }

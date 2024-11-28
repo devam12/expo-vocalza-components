@@ -1,69 +1,47 @@
 import React, { useCallback, useRef } from "react";
-import { PTTButton } from "./PTTButton";
 import { LockButton } from "./LockButton";
 import { StopButton } from "./StopButton";
 import { Feather } from "@expo/vector-icons";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, FlatList } from "react-native";
-import { useAnimatedStyle, withTiming } from "react-native-reanimated";
-import Animated, { useSharedValue } from "react-native-reanimated";
+import { useAnimatedStyle } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import { useAudioRecordEvent } from "../hooks/useRecordEvent";
 import { Player } from "./Player";
+import { RecordButton } from "./RecordButton";
 
 export const VoiceRecorder = () => {
   const playerRef = useRef<any>(null);
-  const slideX = useSharedValue(0);
-  const opacity = useSharedValue(1);
-  const lockThreshold = 100;
+
   const {
-    recording,
     recordings,
     counterMessage,
     isRecording,
     startRecording,
     stopRecording,
     resetRecordings,
-    setIsRecording,
     isLocked,
     setIsLocked,
   } = useAudioRecordEvent();
 
-  const handlePTTEnd = useCallback(() => {
+  const handleEndRecording = useCallback(() => {
     if (!isLocked) {
       stopRecording();
       setIsLocked(false);
-      slideX.value = withTiming(0, { duration: 300 });
     }
   }, [isLocked, stopRecording]);
 
-  const handleLockSlide = () => {
+  const handleLockRecording = () => {
     if (!isLocked) {
       setIsLocked(true);
-      slideX.value = withTiming(0, { duration: 300 });
-      opacity.value = withTiming(0, { duration: 300 });
     }
   };
 
-  const handleStop = () => {
-    stopRecording();
-    opacity.value = withTiming(1, { duration: 300 });
-  };
-
-  const pttAnimatedStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: slideX.value }],
-    opacity: isLocked ? 0 : 1,
-  }));
-
   const lockButtonStyle = useAnimatedStyle(() => ({
     opacity: isRecording ? (isLocked ? 1 : 0.6) : 0,
-    transform: [{ translateX: slideX.value }],
   }));
 
   const waveAnimatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: slideX.value },
-      { rotate: `${Math.sin(slideX.value / 20) * 5}deg` },
-    ],
     opacity: isRecording && !isLocked ? 1 : 0,
   }));
 
@@ -77,12 +55,7 @@ export const VoiceRecorder = () => {
         }}
       />
 
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <Text
           style={[
             styles.recordingText,
@@ -102,20 +75,20 @@ export const VoiceRecorder = () => {
 
       <View style={styles.controlsContainer}>
         {!isLocked && (
-          <Animated.View style={[styles.pttContainer, pttAnimatedStyle]}>
-            <PTTButton
-              isRecording={isRecording}
-              onStart={startRecording}
-              onEnd={handlePTTEnd}
-              onSlideToLock={handleLockSlide}
-              lockThreshold={lockThreshold}
-            />
-          </Animated.View>
+          <RecordButton
+            text=""
+            swipeable={true}
+            swipeDirection={"right"}
+            onHoldStart={startRecording}
+            onHoldEnd={handleEndRecording}
+            onThresholdReached={handleLockRecording}
+            threshold={100}
+          ></RecordButton>
         )}
 
         {isRecording && isLocked && (
           <View style={styles.stopButtonContainer}>
-            <StopButton onStop={handleStop} />
+            <StopButton onStop={stopRecording} />
           </View>
         )}
 
