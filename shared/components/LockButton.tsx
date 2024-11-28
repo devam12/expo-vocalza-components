@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient"; // Ensure this is the correct import
+import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
 import Animated, {
   useAnimatedStyle,
@@ -33,14 +33,14 @@ export const LockButton = ({ isLocked }: LockButtonProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 50,
-    height: 50,
-    borderRadius: 25, // Make the button circular
-    justifyContent: "center", // Center the content vertically
-    alignItems: "center", // Center the content horizontally
+    width: 60,
+    height: 60,
+    borderRadius: 35,
+    justifyContent: "center",
+    alignItems: "center",
     shadowColor: "#000",
-    position: "absolute", // Optional for positioning
-    right: 20, // Adjust position relative to the screen
+    position: "absolute",
+    right: 20,
     shadowOffset: {
       width: 0,
       height: 4,
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
-    backgroundColor: "transparent", // Ensure the gradient shows correctly
+    backgroundColor: "transparent",
   },
 });

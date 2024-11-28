@@ -37,9 +37,9 @@ export const StopButton = ({ onStop }: StopButtonProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     justifyContent: "center", // Ensure vertical centering
     alignItems: "center", // Ensure horizontal centering
     shadowColor: "#000",
