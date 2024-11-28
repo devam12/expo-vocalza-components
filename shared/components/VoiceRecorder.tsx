@@ -82,22 +82,30 @@ export const VoiceRecorder = () => {
         data={recordings}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
-          return (
-            <TouchableOpacity style={{ marginBottom: 12 }}>
-              <Text style={{ marginBottom: 12 }}>
-                {item.name} - {item.duration}
-              </Text>
-              <Player ref={playerRef} uri={item.uri}></Player>
-            </TouchableOpacity>
-          );
+          return <Player ref={playerRef} item={item} />;
         }}
       />
 
-      <Text
-        style={[styles.recordingText, { color: isRecording ? "red" : "black" }]}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
       >
-        Timer: {counterMessage}
-      </Text>
+        <Text
+          style={[
+            styles.recordingText,
+            { color: isRecording ? "red" : "black" },
+          ]}
+        >
+          Timer: {counterMessage}
+        </Text>
+        <TouchableOpacity onPress={resetRecordings}>
+          <Text style={[styles.recordingText, { color: "blue" }]}>
+            Clear Recordings
+          </Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.controlsContainer}>
         {!isLocked && (
           <Animated.View style={[styles.pttContainer, pttAnimatedStyle]}>
@@ -125,12 +133,6 @@ export const VoiceRecorder = () => {
           <Feather name="arrow-right" size={12} color="#fff" />
         </Animated.View>
       </View>
-
-      {/* {isRecording && (
-        <View style={styles.recordingIndicator}>
-          <Text style={styles.recordingText}>Recording ongoing ...</Text>
-        </View>
-      )} */}
     </View>
   );
 };
@@ -138,7 +140,7 @@ export const VoiceRecorder = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f5f5f5",
-    padding: 8,
+    padding: 12,
     borderRadius: 8,
     paddingBottom: 16,
   },
@@ -174,13 +176,10 @@ const styles = StyleSheet.create({
     opacity: 0,
     right: "25%",
   },
-  recordingIndicator: {
-    flexDirection: "row",
-    justifyContent: "center",
-    margin: 10,
-  },
   recordingText: {
     color: "#ff4081",
     fontWeight: "bold",
+    fontSize: 16,
+    marginBottom: 8,
   },
 });
