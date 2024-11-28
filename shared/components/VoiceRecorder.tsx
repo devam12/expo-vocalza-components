@@ -98,7 +98,7 @@ export const VoiceRecorder = () => {
             { color: isRecording ? "red" : "black" },
           ]}
         >
-          Timer: {counterMessage}
+          {counterMessage} / 01:00
         </Text>
         {!!recordings?.length && (
           <TouchableOpacity onPress={resetRecordings}>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   recordingText: {
     color: "#ff4081",
     fontWeight: "bold",
-    fontSize: 16,
-    marginBottom: 8,
+    fontSize: 20,
+    marginBottom: 12,
   },
 });
