@@ -100,11 +100,13 @@ export const VoiceRecorder = () => {
         >
           Timer: {counterMessage}
         </Text>
-        <TouchableOpacity onPress={resetRecordings}>
-          <Text style={[styles.recordingText, { color: "blue" }]}>
-            Clear Recordings
-          </Text>
-        </TouchableOpacity>
+        {!!recordings?.length && (
+          <TouchableOpacity onPress={resetRecordings}>
+            <Text style={[styles.recordingText, { color: "blue" }]}>
+              Clear Recordings
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.controlsContainer}>
         {!isLocked && (
