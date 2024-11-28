@@ -83,31 +83,32 @@ export const useAudioRecordEvent = () => {
     try {
       if (recording) {
         const { durationMillis } = await recording.getStatusAsync();
-
         await recording.stopAndUnloadAsync();
-        const uri = recording.getURI();
-        if (uri) {
-          const duration = moment
-            .utc(moment.duration(durationMillis).asMilliseconds())
-            .format("mm:ss");
-
-          setRecordings((prev) => [
-            ...prev,
-            {
-              name: `Recording ${prev.length + 1}`,
-              uri,
-              duration,
-            },
-          ]);
-        }
-
         setRecording(null);
         setIsRecording(false);
         setIsLocked(false);
-        startTime.current = null;
-        await Audio.setAudioModeAsync({
-          allowsRecordingIOS: false,
-        });
+
+        if (durationMillis > 1000) {
+          const uri = recording.getURI();
+          if (uri) {
+            const duration = moment
+              .utc(moment.duration(durationMillis).asMilliseconds())
+              .format("mm:ss");
+
+            setRecordings((prev) => [
+              ...prev,
+              {
+                name: `Recording ${prev.length + 1}`,
+                uri,
+                duration,
+              },
+            ]);
+          }
+          startTime.current = null;
+          await Audio.setAudioModeAsync({
+            allowsRecordingIOS: false,
+          });
+        }
       }
     } catch (err) {
       console.error("Failed to stop recording:", err);
