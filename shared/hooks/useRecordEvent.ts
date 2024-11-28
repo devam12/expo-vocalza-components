@@ -59,6 +59,7 @@ export const useAudioRecordEvent = () => {
       setRecordings(recordings);
       setIsRecording(true);
       setIsLocked(false);
+
       await Audio.setAudioModeAsync({
         allowsRecordingIOS: true,
         playsInSilentModeIOS: true,

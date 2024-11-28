@@ -83,8 +83,8 @@ export const VoiceRecorder = () => {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity style={{ marginBottom: 8 }}>
-              <Text style={{ marginBottom: 4 }}>
+            <TouchableOpacity style={{ marginBottom: 12 }}>
+              <Text style={{ marginBottom: 12 }}>
                 {item.name} - {item.duration}
               </Text>
               <Player ref={playerRef} uri={item.uri}></Player>
@@ -126,11 +126,11 @@ export const VoiceRecorder = () => {
         </Animated.View>
       </View>
 
-      {isRecording && (
+      {/* {isRecording && (
         <View style={styles.recordingIndicator}>
           <Text style={styles.recordingText}>Recording ongoing ...</Text>
         </View>
-      )}
+      )} */}
     </View>
   );
 };
@@ -138,6 +138,9 @@ export const VoiceRecorder = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f5f5f5",
+    padding: 8,
+    borderRadius: 8,
+    paddingBottom: 16,
   },
   controlsContainer: {
     flexDirection: "row",

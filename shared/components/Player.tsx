@@ -17,8 +17,8 @@ export const Player = forwardRef(
         style={{
           flexDirection: "row",
           width: "100%",
-          marginBottom: 10,
-          paddingHorizontal: 20,
+          marginBottom: 12,
+          paddingHorizontal: 10,
         }}
       >
         {playing ? (
