@@ -23,16 +23,16 @@ export const useAudioRecordEvent = () => {
       interval.current = setInterval(() => {
         if (startTime.current) {
           const diff = moment.duration(moment().diff(startTime.current));
-          const minutes = diff.minutes().toString().padStart(2, "0");
-          const seconds = diff.seconds().toString().padStart(2, "0");
-          // const minutes = diff.minutes().toLocaleString("en-US", {
-          //   minimumIntegerDigits: 2,
-          //   useGrouping: false,
-          // });
-          // const seconds = diff.seconds().toLocaleString("en-US", {
-          //   minimumIntegerDigits: 2,
-          //   useGrouping: false,
-          // });
+          // const minutes = diff.minutes().toString().padStart(2, "0");
+          // const seconds = diff.seconds().toString().padStart(2, "0");
+          const minutes = diff.minutes().toLocaleString("en-US", {
+            minimumIntegerDigits: 2,
+            useGrouping: false,
+          });
+          const seconds = diff.seconds().toLocaleString("en-US", {
+            minimumIntegerDigits: 2,
+            useGrouping: false,
+          });
 
           setCounterMessage(`${minutes}:${seconds}`);
         }
@@ -56,7 +56,6 @@ export const useAudioRecordEvent = () => {
         }
       }
 
-      setRecordings(recordings);
       setIsRecording(true);
       setIsLocked(false);
 
@@ -78,11 +77,12 @@ export const useAudioRecordEvent = () => {
   const stopRecording = async () => {
     try {
       if (recording) {
+        //Get the durationMillis before stop recoding
+        const { durationMillis } = await recording.getStatusAsync();
+
         await recording.stopAndUnloadAsync();
         const uri = recording.getURI();
         if (uri) {
-          const status = await recording.getStatusAsync();
-          const durationMillis = status.durationMillis || 0;
           const duration = moment
             .utc(moment.duration(durationMillis).asMilliseconds())
             .format("mm:ss");
