@@ -14,15 +14,14 @@ interface LockButtonProps {
 }
 
 export const LockButton = ({ isLocked }: LockButtonProps) => {
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: withSpring(isLocked ? 1 : 1) }],
-    opacity: withSpring(isLocked ? 1 : 0.3),
-  }));
-
   return (
     <AnimatedLinearGradient
-      colors={isLocked ? ["#9575cd", "#7986cb"] : ["#9575cd", "#7986cb"]}
-      style={[styles.container, animatedStyle]}
+      colors={
+        isLocked
+          ? ["#9575cd", "#7986cb"]
+          : ["rgba(149, 117, 205, 0.3)", "rgba(121, 134, 203, 0.3)"]
+      }
+      style={[styles.container]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
     >

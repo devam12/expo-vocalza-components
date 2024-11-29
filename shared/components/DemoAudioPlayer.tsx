@@ -6,13 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useRef } from "react";
+import React from "react";
 import { useAudioRecordEvent } from "../hooks/useRecordEvent";
 import { Player } from "./Player";
 
 const DemoAudioPlayer = () => {
-  const playerRef = useRef<any>(null);
-
   const {
     recording,
     recordings,
@@ -38,14 +36,7 @@ const DemoAudioPlayer = () => {
         data={recordings}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
-          return (
-            <TouchableOpacity style={{ marginBottom: 8 }}>
-              <Text style={{ marginBottom: 4 }}>
-                {item.name} - {item.duration}
-              </Text>
-              <Player ref={playerRef} uri={item.uri}></Player>
-            </TouchableOpacity>
-          );
+          return <Player item={item} />;
         }}
       />
     </View>

@@ -11,8 +11,6 @@ import { Player } from "./Player";
 import { RecordButton } from "./RecordButton";
 
 export const VoiceRecorder = () => {
-  const playerRef = useRef<any>(null);
-
   const {
     recordings,
     counterMessage,
@@ -51,7 +49,7 @@ export const VoiceRecorder = () => {
         data={recordings}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
-          return <Player ref={playerRef} item={item} />;
+          return <Player item={item} />;
         }}
       />
 

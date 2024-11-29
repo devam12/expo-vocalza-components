@@ -15,58 +15,57 @@ interface PlayerProps {
   };
 }
 
-export const Player = forwardRef(
-  ({ item }: PlayerProps, ref: React.Ref<any>) => {
-    const { playAudio, pauseAudio, playing, progress } = usePlayerEvent();
+export const Player = ({ item }: PlayerProps) => {
+  const { playAudio, pauseAudio, playing, progress } = usePlayerEvent();
 
-    const { name, uri, duration } = item;
+  const { name, uri, duration } = item;
+  const ref = useRef<any>(null);
 
-    useImperativeHandle(ref, () => ({
-      playAudio: () => playAudio(uri),
-      pauseAudio,
-    }));
+  useImperativeHandle(ref, () => ({
+    playAudio: () => playAudio(uri),
+    pauseAudio,
+  }));
 
-    const path = item?.uri;
-    // const ref = useRef<IWaveformRef>(null);
+  const path = item?.uri;
 
-    return (
-      <TouchableOpacity style={{ marginBottom: 12 }}>
-        <Text key={item.uri} style={{ marginBottom: 12 }}>
-          {item.name} - {item.duration}
-        </Text>
+  return (
+    <TouchableOpacity style={{ marginBottom: 12 }}>
+      <Text key={item.uri} style={{ marginBottom: 12 }}>
+        {item.name} - {item.duration}
+      </Text>
+      <View
+        style={{
+          flexDirection: "row",
+          width: "100%",
+          alignItems: "center",
+          marginBottom: 12,
+          paddingHorizontal: 10,
+        }}
+      >
+        {playing ? (
+          <AntDesign
+            name="pause"
+            size={36}
+            color="black"
+            style={{ marginRight: 10 }}
+            onPress={pauseAudio}
+          />
+        ) : (
+          <AntDesign
+            name="play"
+            size={36}
+            color="black"
+            style={{ marginRight: 10 }}
+            onPress={() => playAudio(uri)}
+          />
+        )}
         <View
           style={{
-            flexDirection: "row",
-            width: "100%",
-            alignItems: "center",
-            marginBottom: 12,
-            paddingHorizontal: 10,
+            flex: 1,
+            justifyContent: "center",
           }}
         >
-          {playing ? (
-            <AntDesign
-              name="pause"
-              size={36}
-              color="black"
-              style={{ marginRight: 10 }}
-              onPress={pauseAudio}
-            />
-          ) : (
-            <AntDesign
-              name="play"
-              size={36}
-              color="black"
-              style={{ marginRight: 10 }}
-              onPress={() => playAudio(uri)}
-            />
-          )}
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "center",
-            }}
-          >
-            {/* <View
+          {/* <View
               style={{
                 height: 10,
                 width: "100%",
@@ -81,22 +80,21 @@ export const Player = forwardRef(
                 }}
               ></View>
             </View> */}
-            <Waveform
-              mode="static"
-              ref={ref}
-              path={path}
-              candleSpace={2}
-              candleWidth={5}
-              candleHeightScale={5}
-              containerStyle={{ borderRadius: 8, backgroundColor: "#fefefe" }}
-              waveColor={"gray"}
-              onPlayerStateChange={(playerState) => console.log(playerState)}
-              onPanStateChange={(isMoving) => console.log(isMoving)}
-              scrubColor={"red"}
-            />
-          </View>
+          <Waveform
+            mode="static"
+            ref={ref}
+            path={path}
+            candleSpace={2}
+            candleWidth={5}
+            candleHeightScale={5}
+            containerStyle={{ borderRadius: 8, backgroundColor: "#fefefe" }}
+            waveColor={"gray"}
+            onPlayerStateChange={(playerState) => console.log(playerState)}
+            onPanStateChange={(isMoving) => console.log(isMoving)}
+            scrubColor={"red"}
+          />
         </View>
-      </TouchableOpacity>
-    );
-  }
-);
+      </View>
+    </TouchableOpacity>
+  );
+};
