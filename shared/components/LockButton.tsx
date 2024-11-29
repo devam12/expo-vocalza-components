@@ -2,16 +2,10 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
-import Animated, {
-  useAnimatedStyle,
-  withSpring,
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
+import { LockButtonProps } from "../types/LockButton";
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
-
-interface LockButtonProps {
-  isLocked: boolean;
-}
 
 export const LockButton = ({ isLocked }: LockButtonProps) => {
   return (
@@ -29,6 +23,8 @@ export const LockButton = ({ isLocked }: LockButtonProps) => {
     </AnimatedLinearGradient>
   );
 };
+
+export default LockButton;
 
 const styles = StyleSheet.create({
   container: {

@@ -9,24 +9,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
-
-interface RecordButtonProps {
-  text: string;
-  onPress?: () => void;
-  onHoldStart?: () => void;
-  onHoldEnd?: () => void;
-  onThresholdReached?: () => void;
-  swipeable?: boolean;
-  swipeDirection?:
-    | "left"
-    | "right"
-    | "top"
-    | "bottom"
-    | "horizontal"
-    | "vertical";
-  threshold?: number;
-  gradientColors?: string[];
-}
+import { RecordButtonProps } from "../types/RecordButton";
 
 export function RecordButton({
   text,
@@ -162,6 +145,8 @@ export function RecordButton({
   );
 }
 
+export default RecordButton;
+
 const styles = StyleSheet.create({
   container: {
     borderRadius: 50,
@@ -170,7 +155,7 @@ const styles = StyleSheet.create({
     height: 100, // Circular button
     justifyContent: "center",
     alignItems: "center",
-    zIndex:1
+    zIndex: 1,
   },
   holding: {
     opacity: 0.6,

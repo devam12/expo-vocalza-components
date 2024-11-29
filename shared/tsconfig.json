@@ -8,7 +8,15 @@
     "esModuleInterop": true,
     "target": "ES6",
     "module": "ESNext",
-    "jsx": "react" // If using JSX
+    "jsx": "react",
+    "paths": {
+      "@/*": ["./*"],
+      "@shared/*": ["../shared/*"],
+      "@shared/components/*": ["../shared/components/*"],
+      "@shared/hooks/*": ["../shared/hooks/*"],
+      "@shared/types/*": ["../shared/types/*"],
+      "@shared/index": ["../shared/index"]
+    }
   },
   "include": ["/**/*"]
 }

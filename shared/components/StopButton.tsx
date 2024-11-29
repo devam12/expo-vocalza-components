@@ -8,12 +8,9 @@ import Animated, {
   withSequence,
   withDelay,
 } from "react-native-reanimated";
+import { StopButtonProps } from "../types/StopButton";
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
-
-interface StopButtonProps {
-  onStop: () => void;
-}
 
 export const StopButton = ({ onStop }: StopButtonProps) => {
   const animatedStyle = useAnimatedStyle(() => ({
@@ -32,6 +29,8 @@ export const StopButton = ({ onStop }: StopButtonProps) => {
     </AnimatedLinearGradient>
   );
 };
+
+export default StopButton;
 
 const styles = StyleSheet.create({
   container: {

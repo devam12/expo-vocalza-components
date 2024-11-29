@@ -58,7 +58,7 @@
     "react-native-volume-manager": "^1.10.0",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.2",
-    "vocalza-componenets": "^1.0.5"
+    "vocalza-componenets": "^1.0.11"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

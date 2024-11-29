@@ -1,10 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { VoiceRecorder } from "@/shared/components/VoiceRecorder";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
 import { useRecordEvent } from "@/shared/hooks/useRecordEvent";
-import { PlayerControl } from "@/shared/components/PlayerControl";
 import { RecordingControl } from "@/shared/components/RecordingControl";
+import { PlayerControl } from "vocalza-componenets";
 
 const AudioPPTIndex = () => {
   const {

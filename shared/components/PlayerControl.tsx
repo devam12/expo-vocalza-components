@@ -1,13 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Player } from "./Player";
+import { PlayerControlProps } from "../types/Player";
 
-interface Props {
-  recordings: { name: string; uri: string; duration: string }[];
-  resetRecordings: () => void;
-}
-
-export const PlayerControl: React.FC<Props> = ({
+export const PlayerControl: React.FC<PlayerControlProps> = ({
   recordings,
   resetRecordings,
 }) => {
@@ -24,6 +20,8 @@ export const PlayerControl: React.FC<Props> = ({
     </View>
   );
 };
+
+export default PlayerControl;
 
 const styles = StyleSheet.create({
   recordingText: {

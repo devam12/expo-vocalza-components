@@ -66,3 +66,6 @@ export const usePlayerEvent = () => {
     progress,
   };
 };
+
+
+export default usePlayerEvent;

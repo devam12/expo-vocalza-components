@@ -6,17 +6,9 @@ import {
   Waveform,
   type IWaveformRef,
 } from "@simform_solutions/react-native-audio-waveform";
+import { PlayerProps, RecordingProps } from "../types/Player";
 
-interface Recording {
-  name: string;
-  uri: string;
-  duration: string;
-}
-interface PlayerProps {
-  recordings: Recording[];
-}
-
-export const RecordingCard = ({ item }: { item: Recording }) => {
+export const RecordingCard = ({ item }: { item: RecordingProps }) => {
   const { playAudio, pauseAudio, playing, progress } = usePlayerEvent();
 
   const { name, uri, duration } = item;

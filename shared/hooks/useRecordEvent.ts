@@ -132,3 +132,6 @@ export const useRecordEvent = () => {
     setIsRecording,
   };
 };
+
+
+export default useRecordEvent;

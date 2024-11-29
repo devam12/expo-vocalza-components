@@ -11,17 +11,9 @@ import Animated, {
 } from "react-native-reanimated";
 import IconButton from "./IconButton";
 import { Feather } from "@expo/vector-icons";
+import { RecordingControlProps } from "../types/RecordingControl";
 
-interface Props {
-  isRecording: boolean;
-  counterMessage: string;
-  isLocked: boolean;
-  setIsLocked: (locked: boolean) => void;
-  startRecording: () => void;
-  stopRecording: () => void;
-}
-
-export const RecordingControl: React.FC<Props> = ({
+export const RecordingControl: React.FC<RecordingControlProps> = ({
   isRecording,
   counterMessage,
   isLocked,
@@ -86,6 +78,8 @@ export const RecordingControl: React.FC<Props> = ({
     </View>
   );
 };
+
+export default RecordingControl;
 
 const styles = StyleSheet.create({
   controlsContainer: {
