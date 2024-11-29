@@ -8,7 +8,7 @@ interface RecordingType {
   duration: string;
 }
 
-export const useAudioRecordEvent = () => {
+export const useRecordEvent = () => {
   const [permissionResponse, requestPermission] = Audio.usePermissions();
   const [recordings, setRecordings] = useState<RecordingType[]>([]);
   const [isRecording, setIsRecording] = useState<boolean>(false);

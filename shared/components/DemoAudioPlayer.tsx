@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { useAudioRecordEvent } from "../hooks/useRecordEvent";
+import { useRecordEvent } from "../hooks/useRecordEvent";
 import { Player } from "./Player";
 
 const DemoAudioPlayer = () => {
@@ -18,7 +18,7 @@ const DemoAudioPlayer = () => {
     startRecording,
     stopRecording,
     resetRecordings,
-  } = useAudioRecordEvent();
+  } = useRecordEvent();
 
   return (
     <View>
