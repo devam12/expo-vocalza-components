@@ -68,6 +68,7 @@ export const RecordingControl: React.FC<Props> = ({
         )}
 
         {isRecording && isLocked && <StopButton onStop={stopRecording} />}
+
         {isRecording && <LockButton isLocked={isLocked} />}
 
         {isRecording && !isLocked && (
