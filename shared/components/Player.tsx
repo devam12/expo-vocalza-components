@@ -1,5 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { usePlayerEvent } from "../hooks/usePlayerEvent";
 import {
@@ -7,15 +7,16 @@ import {
   type IWaveformRef,
 } from "@simform_solutions/react-native-audio-waveform";
 
+interface Recording {
+  name: string;
+  uri: string;
+  duration: string;
+}
 interface PlayerProps {
-  item: {
-    name: string;
-    uri: string;
-    duration: string;
-  };
+  recordings: Recording[];
 }
 
-export const Player = ({ item }: PlayerProps) => {
+export const RecordingCard = ({ item }: { item: Recording }) => {
   const { playAudio, pauseAudio, playing, progress } = usePlayerEvent();
 
   const { name, uri, duration } = item;
@@ -98,3 +99,19 @@ export const Player = ({ item }: PlayerProps) => {
     </TouchableOpacity>
   );
 };
+
+export const Player = ({ recordings }: PlayerProps) => {
+  return (
+    <FlatList
+      data={recordings}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={({ item }) => {
+        console.log(item);
+
+        return <RecordingCard item={item} />;
+      }}
+    />
+  );
+};
+
+export default Player;

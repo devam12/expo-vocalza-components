@@ -1,16 +1,23 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback } from "react";
 import { LockButton } from "./LockButton";
 import { StopButton } from "./StopButton";
 import { Feather } from "@expo/vector-icons";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { View, Text, FlatList } from "react-native";
-import { useAnimatedStyle } from "react-native-reanimated";
-import Animated from "react-native-reanimated";
+import { View, Text } from "react-native";
 import { useAudioRecordEvent } from "../hooks/useRecordEvent";
 import { Player } from "./Player";
 import { RecordButton } from "./RecordButton";
+import IconButton from "./IconButton";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withSpring,
+} from "react-native-reanimated";
 
 export const VoiceRecorder = () => {
+  const offset = useSharedValue<number>(8);
+
   const {
     recordings,
     counterMessage,
@@ -25,7 +32,6 @@ export const VoiceRecorder = () => {
   const handleEndRecording = useCallback(() => {
     if (!isLocked) {
       stopRecording();
-      setIsLocked(false);
     }
   }, [isLocked, stopRecording]);
 
@@ -35,23 +41,17 @@ export const VoiceRecorder = () => {
     }
   };
 
-  const lockButtonStyle = useAnimatedStyle(() => ({
-    opacity: isRecording ? (isLocked ? 1 : 0.6) : 0,
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: offset.value }],
   }));
 
-  const waveAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: isRecording && !isLocked ? 1 : 0,
-  }));
+  React.useEffect(() => {
+    offset.value = withRepeat(withSpring(20), -1, true);
+  }, []);
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={recordings}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => {
-          return <Player item={item} />;
-        }}
-      />
+      <Player recordings={recordings} />
 
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <Text
@@ -84,19 +84,21 @@ export const VoiceRecorder = () => {
           ></RecordButton>
         )}
 
-        {isRecording && isLocked && (
-          <View style={styles.stopButtonContainer}>
-            <StopButton onStop={stopRecording} />
-          </View>
+        {isRecording && isLocked && <StopButton onStop={stopRecording} />}
+
+        {isRecording && <LockButton isLocked={isLocked} />}
+
+        {isRecording && !isLocked && (
+          <Animated.View
+            style={[animatedStyles, { right: 100, position: "absolute" }]}
+          >
+            <IconButton
+              icon={<Feather name="arrow-right" size={12} color="#000" />}
+              containerStyle={styles.waveIndicator}
+              size={12}
+            ></IconButton>
+          </Animated.View>
         )}
-
-        <Animated.View style={[styles.lockButtonContainer, lockButtonStyle]}>
-          <LockButton isLocked={isLocked} />
-        </Animated.View>
-
-        <Animated.View style={[styles.waveIndicator, waveAnimatedStyle]}>
-          <Feather name="arrow-right" size={12} color="#fff" />
-        </Animated.View>
       </View>
     </View>
   );
@@ -114,32 +116,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  pttContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  stopButtonContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  lockButtonContainer: {
-    position: "absolute",
-    right: 0,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   waveIndicator: {
-    position: "absolute",
-    width: 20,
-    height: 20,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    borderRadius: 15,
-    opacity: 0,
-    right: "25%",
+    zIndex: 0,
   },
   recordingText: {
     color: "#ff4081",

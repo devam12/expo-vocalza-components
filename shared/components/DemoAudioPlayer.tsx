@@ -32,13 +32,7 @@ const DemoAudioPlayer = () => {
         <Button title="Clear Recordings" onPress={resetRecordings} />
       )}
 
-      <FlatList
-        data={recordings}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => {
-          return <Player item={item} />;
-        }}
-      />
+      <Player recordings={recordings}></Player>
     </View>
   );
 };

@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
     height: 100, // Circular button
     justifyContent: "center",
     alignItems: "center",
+    zIndex:1
   },
   holding: {
     opacity: 0.6,

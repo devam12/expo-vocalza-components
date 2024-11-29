@@ -12,6 +12,8 @@ export const IconButton = ({
   badgeStyle,
   showBadge = false,
   backgroundColor = "#d3d3d3",
+  activeOpacity,
+  containerStyle,
 }: IconButtonProps) => {
   return (
     <TouchableOpacity
@@ -19,8 +21,9 @@ export const IconButton = ({
         styles.iconButton,
         filled && { backgroundColor },
         { width: size + 16, height: size + 16 },
+        containerStyle,
       ]}
-      activeOpacity={0.7}
+      activeOpacity={activeOpacity || 0.7}
     >
       {showBadge && (
         <Badge style={[styles.badge, badgeStyle]} size={badgeSize}>

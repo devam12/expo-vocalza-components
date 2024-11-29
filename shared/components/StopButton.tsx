@@ -17,9 +17,7 @@ interface StopButtonProps {
 
 export const StopButton = ({ onStop }: StopButtonProps) => {
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      { scale: withDelay(100, withSequence(withSpring(0.8), withSpring(1))) },
-    ],
+    transform: [{ scale: withDelay(100, withSpring(1)) }],
   }));
 
   return (
@@ -37,9 +35,9 @@ export const StopButton = ({ onStop }: StopButtonProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
     justifyContent: "center", // Ensure vertical centering
     alignItems: "center", // Ensure horizontal centering
     shadowColor: "#000",
