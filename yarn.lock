@@ -2159,6 +2159,13 @@
     component-type "^1.2.1"
     join-component "^1.1.0"
 
+"@simform_solutions/react-native-audio-waveform@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@simform_solutions/react-native-audio-waveform/-/react-native-audio-waveform-2.1.2.tgz#2f6e7e1ed10a05cf60e569781fa40527d4a131ef"
+  integrity sha512-+zmzG1rahiTr+sQZX5trBLMYv3cVnYu0PuA5HpNIKX/yN0qeGsIxnCOwpaR+7Q7Yi5TCZDQNME9KovwC7/Cj+g==
+  dependencies:
+    lodash "^4.17.21"
+
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
