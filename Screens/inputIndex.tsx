@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "@/util-component/Header";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, View } from "react-native";
 import ComponentShowcase from "@/util-component/ComponentShowcase";
 import CustomTextInput from "@/shared/components/Input";
 import { Feather } from "@expo/vector-icons";
@@ -11,30 +11,40 @@ const InputIndex = () => {
       <Header title="Input Components" />
 
       <ComponentShowcase title="Underline Input">
-        <CustomTextInput
-          placeholder="Underline Variant"
-          variant="underline"
-          multiline
-          numberOfLines={4}
-          leftIcon={<Feather name="activity" size={24} color="black" />}
-        />
+        <View style={{ flexDirection: "row" }}>
+          <CustomTextInput
+            placeholder="Underline Variant"
+            variant="underline"
+            multiline
+            numberOfLines={2}
+            leftIcon={<Feather name="activity" size={24} color="black" />}
+          />
+        </View>
       </ComponentShowcase>
 
       <ComponentShowcase title="Outlined Input">
-        <CustomTextInput
-          placeholder="Enter Your Phone Number"
-          variant="outlined"
-          // rightIcon={<Feather name="activity" size={24} color="black" />}
-          // leftIcon={<Feather name="activity" size={24} color="black" />}
-        />
+        <View style={{ flexDirection: "row" }}>
+          <CustomTextInput
+            placeholder="Enter Your Phone Number"
+            variant="outlined"
+            rightIcon={<Feather name="activity" size={24} color="black" />}
+            leftIcon={<Feather name="activity" size={24} color="black" />}
+          />
+        </View>
       </ComponentShowcase>
 
       <ComponentShowcase title="Filled Input">
-        <CustomTextInput
-          placeholder="Filled Variant"
-          variant="filled"
-          leftIcon={<Feather name="activity" size={24} color="black" />}
-        />
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
+          <CustomTextInput
+            placeholder="Filled Variant"
+            variant="filled"
+            leftIcon={<Feather name="activity" size={24} color="black" />}
+          />
+        </View>
       </ComponentShowcase>
     </SafeAreaView>
   );

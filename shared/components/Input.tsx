@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, StyleSheet, View, TextInputProps } from "react-native";
+import { TextInput, StyleSheet, View } from "react-native";
 import { CustomTextInputProps } from "../types/Input";
 
 export const CustomTextInput: React.FC<CustomTextInputProps> = ({
@@ -22,24 +22,18 @@ export const CustomTextInput: React.FC<CustomTextInputProps> = ({
   };
 
   return (
-    <View
-      style={[
-        styles.container,
-        getVariantStyles(),
-        !!leftIcon && styles.leftSpace,
-        !!rightIcon && styles.rightSpace,
-      ]}
-    >
-      {leftIcon && leftIcon}
+    <View style={[styles.container, getVariantStyles()]}>
+      {leftIcon && <View style={styles.iconContainer}>{leftIcon}</View>}
       <TextInput
         style={[
           styles.textInput,
           variant === "filled" && styles.textInputFilled,
+          props.numberOfLines ? { height: props.numberOfLines * 24 } : null,
           style,
         ]}
         {...props}
       />
-      {rightIcon && rightIcon}
+      {rightIcon && <View style={styles.iconContainer}>{rightIcon}</View>}
     </View>
   );
 };
@@ -48,17 +42,29 @@ export default CustomTextInput;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 8,
+    borderWidth: 1,
+    borderColor: "#BABCAB",
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    minHeight: 48,
   },
   textInput: {
     flex: 1,
+    flexDirection: "column",
     fontSize: 16,
-    padding: 10,
     color: "#000",
+    paddingVertical: 8,
+  },
+  textInputFilled: {
+    backgroundColor: "#f4f4f4",
+    borderRadius: 8,
+    paddingHorizontal: 12,
   },
   underline: {
+    borderWidth: 0,
     borderBottomWidth: 1,
     borderBottomColor: "#BABCAB",
   },
@@ -71,18 +77,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#f4f4f4",
     borderRadius: 8,
   },
-  textInputFilled: {
-    padding: 12,
+  multilineInput: {
+    textAlignVertical: "top",
   },
-  leftSpace: {
-    paddingLeft: 8,
-  },
-  rightSpace: {
-    paddingRight: 8,
-  },
-  icon: {
-    fontSize: 20,
-    color: "#888",
-    paddingHorizontal: 8,
+  iconContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 4,
   },
 });
